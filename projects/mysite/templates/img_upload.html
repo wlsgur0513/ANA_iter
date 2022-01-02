@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
     <title>ANA</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/img_upload.css' %}">
     <script src="{% static 'camera_item.js' %}"></script>
@@ -13,6 +15,20 @@
             background-image: url( "{% static 'image/intro2.jpg' %}");
         }
     </style>
+    <script type="text/javascript">
+           $(document).ready(function(){
+                $(".page-link").on('click', function() {
+                    $("#page").val($(this).data("page"));
+                    $("#searchForm").submit();
+                });
+            
+                $("#btn_search").on('click', function() {
+                    $("#kw").val($(".kw").val());
+                    $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+                    $("#searchForm").submit();
+                });
+            });
+    </script>
 </head>
     
 <body>
@@ -48,5 +64,9 @@
             </div>
         </div>
     </div>
+    <form id="searchForm" method="get" action="{% url 'index' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
 </body>
 </html>
