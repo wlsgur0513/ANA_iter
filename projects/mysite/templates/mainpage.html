@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mainpage.css' %}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <title>ANA</title>
+    <script type="text/javascript">
+        function printTime(){
+            var clock = document.getElementById("clock");  //id값인 <span>태그를 변수clock에 저장
+            var now = new Date(); //객체 생성
+             clock.innerHTML =     //태그내부에 태그 설정s
+             /*now.getFullYear() + "/" +
+             (now.getMonth()+1) + "/"+
+             now.getDate()+ " " + */
+             now.getHours()+":"+
+             now.getMinutes() + ":" +
+             now.getSeconds() +
+             (now.getHours() >= 12 ? "PM": "AM");
+        
+             setTimeout("printTime()", 1000);  //1초마다 printTime()함수 호출
+           }
+           window.onload = function(){ //html 로딩시 콜백함수 호출
+            printTime();
+           }
+
+           $(document).ready(function(){
+                $(".page-link").on('click', function() {
+                    $("#page").val($(this).data("page"));
+                    $("#searchForm").submit();
+                });
+            
+                $("#btn_search").on('click', function() {
+                    $("#kw").val($(".kw").val());
+                    $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+                    $("#searchForm").submit();
+                });
+            });
+    </script>
+    <style>
+        .intro_bg{
+            background-image: url( "{% static 'image/intro2.jpg' %}");
+        }
+        input[id="menuicon"] {display:none;}
+        input[id="menuicon"] + label {display:block;width:44px;height:24px;position:relative;cursor:pointer;}
+        input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:#000;transition:all .35s;}
+        input[id="menuicon"] + label span:nth-child(1) {top:0;}
+        input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);}
+        input[id="menuicon"] + label span:nth-child(3) {bottom:0;}
+        input[id="menuicon"]:checked + label {z-index:2;}
+        input[id="menuicon"]:checked + label span {background:#fff;}
+        input[id="menuicon"]:checked + label span:nth-child(1) {top:50%;transform:translateY(-50%) rotate(45deg);}
+        input[id="menuicon"]:checked + label span:nth-child(2) {opacity:0;}
+        input[id="menuicon"]:checked + label span:nth-child(3) {bottom:50%;transform:translateY(50%) rotate(-45deg);}
+        div[class="sidebar"] {width:300px;height:100%;background:#222;position:fixed;top:0;left:-300px;z-index:1;transition:all .35s;}
+        input[id="menuicon"]:checked + label + div {left:0;}
+        .center {
+            position:relative;
+            width: 100px;
+            height: 100px;
+            top: -607px;
+            left: 25px;
+        }
+    </style>
+</head>
+<body>
+        <div class="wrap">
+            <div class="intro_bg">
+                <div class="header" id="link_header">
+                    <ul class="nav">
+                        <li><a href="#link_header">ANA</a></li>
+                        <li><a href="{% url 'pybo:index' %}">질문 게시판</a></li>
+                        <li><a href="#link_main_text1">채팅방</a></li>
+                        <li><a href="">택배 조회</a></li>
+                        <li><a href="">날씨 조회</a></li>
+                        <li><a href="{% url 'mainpage:upload' %}">이미지 업로드</a></li>
+                    </ul>
+                    <div class="searchArea">
+                        <form>
+                            <input type="search" placeholder="Search" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+                            <span class="btn1_iter" type="button" id="btn_search">검색</span>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="intro_text">
+                    <h1 class="animate__animated animate__backInDown">ANA</h1>
+                    <h4 class="animate__animated animate__flash">간단한 질문 게시판과 채팅방 등 여러 기능을 구현한 ANA용 포트폴리오</h4>
+                </div>
+
+                <div class="center">
+                    <input type="checkbox" id="menuicon">
+                    <label for="menuicon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="sidebar">
+                        <ul class="nav1">
+                            <li><a href="#link_header">ANA</a></li>
+                            <li><a href="{% url 'pybo:index' %}">질문 게시판</a></li>
+                            <li><a href="#link_main_text1">채팅방</a></li>
+                            <li><a href="">택배 조회</a></li>
+                            <li><a href="">날씨 조회</a></li>
+                            <li><a href="{% url 'mainpage:upload' %}">이미지 업로드</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clock_iter">
+                <div class="clock_1"></div>
+                <div class="clock_2" id="clock"></div>
+                <div class="clock_3"></div>
+            </div>    
+            <div class="main_text0" id="link_main_text0">
+                <h1>ABOUT</h1>
+                <div class="contents1">질문 게시판과 채팅방 등 여러 기능들을 미리 보기할 수 있는 기능을 지원합니다.</div>
+                
+                <ul class="icons">
+                    <li>
+                        <div class="icon_img">
+                            <img src="{% static 'image/board.png' %}" width="109.4px" height="109.4px">
+                        </div>
+                        <div class="contents1_bold">질문 검색(RS)</div>
+                        <div class="contents2">
+                            사용자가 질문들을 미리 보고 질문을 직접 검색할 수 있습니다.
+                        </div>
+                        <a href="{% url 'homepage' %}"><div class="more">바로 가기</div></a>
+                    </li>
+                    <li>
+                        <div class="icon_img">
+                            <img src="{% static 'image/speak.png' %}" width="109.4px" height="109.4px">
+                        </div>
+                        <div class="contents1_bold">채팅방</div>
+                        <div class="contents2">
+                            사용자가 익명으로 다른 사용자와 채팅을 할 수 있습니다.
+                        </div>
+                        <a href=""><div class="more">바로 가기</div></a>
+                    </li>
+                    <li>
+                        <div class="icon_img">
+                            <img src="{% static 'image/courier.png' %}" width="109.4px" height="109.4px">
+                        </div>
+                        <div class="contents1_bold">택배 조회</div>
+                        <div class="contents2">
+                            사용자가 직접 택배 조회를 할 수 있습니다.
+                        </div>
+                        <a href=""><div class="more">바로 가기</div></a>
+                    </li>
+                    <li>
+                        <div class="icon_img">
+                            <img src="{% static 'image/weather.png' %}" width="109.4px" height="109.4px">
+                        </div>
+                        <div class="contents1_bold">날씨 조회</div>
+                        <div class="contents2">
+                            사용자가 직접 날씨 조회를 할 수 수 있습니다.
+                        </div>
+                        <a href=""><div class="more">바로 가기</div></a>
+                    </li>
+                    <li>
+                        <div class="icon_img">
+                            <img src="{% static 'image/img.png' %}" width="109.4px" height="109.4px">
+                        </div>
+                        <div class="contents1_bold">이미지 업로드</div>
+                        <div class="contents2">
+                            사용자가 직접 영상과 이미지를 올릴 수 있습니다.
+                        </div>
+                        <a href="{% url 'mainpage:upload' %}"><div class="more">바로 가기</div></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form id="searchForm" method="get" action="{% url 'index' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+</body>
+</html>

@@ -1,0 +1,236 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+.intro_bg{
+    width: 96rem;
+    height: 750px;
+}
+
+.intro_bg:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 750px;
+    background-color: rgba(0, 0, 0, 0.37);
+}
+.header{
+    position: absolute;
+    display: flex;
+    width: 1280px;
+    margin: 0px 119px ;
+    height: 86px;
+}
+.nav-link_iter:hover{
+    text-decoration: none;
+}
+.searchArea {
+    width: 300px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    margin-top: 24px;
+}
+
+.searchArea > form > input {
+    border:none;
+    width: 250px;
+    height: 40px;
+    background: rgb(0, 0, 0, 0.0);
+    color: #fff;
+    padding-left: 10px;
+}
+.searchArea > form > span{
+    width: 50px;
+    color:#fff;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.nav{
+    display: flex;
+    justify-content: flex-start;
+    line-height: 86px;
+    width:calc(1280px - 300px);
+}
+
+.nav > li{
+    margin-left: 84px;
+}
+
+.nav > li > a {
+    color: #fff;
+}
+
+.btn1_iter {
+    position: relative;
+    left:255.5px;
+    top:-31.5px;
+}
+
+.table_main0 {
+    width: 96rem;
+    height: 664px;
+    top: 86px;
+    position: absolute;
+}
+.table_main0:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.185);
+}
+.table_main1 {
+    background-color: #f2f2f3;
+    width: 82rem;
+    height: 664px;
+    margin: 0px 112px 0px 112px;
+    position: absolute;
+} 
+.table_line1 {
+    position: relative;
+    top: 30px;
+    width: 100%;
+    height: 75px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main_text0 {
+    width: 82rem;
+    height: 601px;
+    margin-top: -62px;
+    background-color: #f2f2f3;
+}
+
+.main_text0 > h1 {
+    padding-top: 86px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.main_text0 > .contents1 { 
+    text-align: center;
+}
+
+.icons {
+    display: flex;
+    width: 340px;
+    height: 302px;
+    margin: auto;
+}
+
+.icons > li {
+    flex: 1;
+    background-color: white;
+    margin-top: 39px;
+    height: 307px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.icons .contents2 {
+    width: 240px;
+    margin: auto;
+    letter-spacing: -1px;
+}
+
+.main_text1 {
+    width: 82rem;
+    height: 726px;
+    background-color: white;
+}
+.main_text1 > h1 {
+    padding-top: 80px;
+    font-size: 120px;
+    text-align: center;
+}
+
+.main_text1 > .contents1 {
+    text-align: center;
+}
+
+.searchArea_iter {
+    width: 600px;
+    height: 60px;
+    border: 1px solid rgba(0,0,0,1);
+    border-radius: 60px;
+    margin: 27px auto 190px auto;
+    background: rgb(0, 0, 0, 0.6);
+}
+
+.searchArea_iter > form > input {
+    border:none;
+    border-radius: 60px 0px 0px 60px;
+    width: 530px;
+    height: 60px;
+    background: #fff;
+    color: black;
+    padding-left: 25px;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.btn_img {
+    width: 70px;
+    height: 60px;
+    float: right;
+    margin-top: -60px;
+}
+
+.searchArea_iter > form > div > img {
+    width: 60px;
+    height: 60px;
+    margin-left: 3px;
+    position: absolute;
+}
+
+.table_iter {
+    position: relative;
+    top:8px;
+    font-size: 13px;
+}
+
+@media screen and (min-width:97rem) {
+    .intro_bg{
+        width: 118.9rem;
+        height: 966px;
+    }
+
+    .header{
+        position: absolute;
+        display: flex;
+        width: 1280px;
+        margin: 0px 311px ;
+        height: 86px;
+    }
+
+    .table_main0:before {
+        content: '';
+        position: absolute;
+        width: 118.9rem;
+        height: 880px;
+        background-color: rgba(255, 255, 255, 0.185);
+    }
+
+    .main_text1 {
+        width: 104.8em;
+        height: 726px;
+        background-color: white;
+    }
+
+    .main_text0 {
+        width: 104.8em;
+        height: 601px;
+        margin-top: 0;
+        background-color: #f2f2f3;
+    }
+}
